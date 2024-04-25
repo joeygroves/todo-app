@@ -8,6 +8,10 @@ const App = (props) => {
   const [newTodo, setNewTodo] = useState('');
   const [showAll, setShowAll] = useState(true);
 
+  const completeTodo = () => {
+
+  }
+
   const addTodo = () => {
     event.preventDefault();
     console.log('add button clicked', event.target);
@@ -56,6 +60,7 @@ const App = (props) => {
               todo={todo}
               removeTodo={() => removeTodo(todo.id)}
               updateTodo={() => updateTodo(todo.id)}
+              completeTodo={() => completeTodo(todo.id)}
             />
           )}
         </ul>
