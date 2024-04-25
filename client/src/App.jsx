@@ -4,10 +4,9 @@ import Todos from './components/Todos';
 import Footer from './components/Footer';
 
 const App = (props) => {
-  //const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(props.todos);
   const [newTodo, setNewTodo] = useState('');
-
-  const { todos } = props;
+  const [showAll, setShowAll] = useState(true);
 
   const addTodo = () => {
     event.preventDefault();
@@ -28,6 +27,10 @@ const App = (props) => {
     setNewTodo(event.target.value);
   }
 
+  const todosToShow = showAll
+    ? todos
+    : todos.filter(todo => todo.complete === true)
+
   return (
     <div className="bg-teal flex flex-col h-screen justify-center items-center pt-10">
 
@@ -40,8 +43,14 @@ const App = (props) => {
           handleTodoChange={handleTodoChange}
         />
 
+        <div>
+          <button onClick={() => setShowAll(!showAll)} className="p-1 mr-4 mb-3 border-solid border-2 float-right">
+            Show {showAll ? 'Completed' : 'All' }
+          </button>
+        </div>
+
         <ul className="justify-center">
-          {todos.map(todo => 
+          {todosToShow.map(todo => 
             <Todos 
               key={todo.id}
               todo={todo}
