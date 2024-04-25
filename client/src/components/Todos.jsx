@@ -5,7 +5,7 @@ const Todos = ({ todo, removeTodo, updateTodo, completeTodo }) => {
                 type="checkbox" 
                 className="py-4 px-2" 
                 checked={todo.complete}
-                onClick={completeTodo}
+                onChange={completeTodo}
             />
             
             <p className="pl-5 px-2 text-md w-10/12">
