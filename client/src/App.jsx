@@ -1,14 +1,27 @@
 import { useState, useEffect } from 'react';
 import TodosForm from './components/TodosForm';
+import Todos from './components/Todos';
 import Footer from './components/Footer';
 
-function App() {
-  const [todos, setTodos] = useState([]);
+const App = (props) => {
+  //const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
+
+  const { todos } = props;
 
   const addTodo = () => {
     event.preventDefault();
-    console.log('button clicked', event.target);
+    console.log('add button clicked', event.target);
+  }
+
+  const removeTodo = () => {
+    event.preventDefault();
+    console.log('remove button clicked', event.target);
+  }
+
+  const updateTodo = () => {
+    event.preventDefault();
+    console.log('update button clicked', event.target);
   }
 
   const handleTodoChange = (event) => {
@@ -27,14 +40,16 @@ function App() {
           handleTodoChange={handleTodoChange}
         />
 
-        <div className="flex justify-center">
-          <div className="flex p-4 w-11/12 bg-grey rounded-sm">
-            <input type="checkbox" className="py-4 px-2" />
-            <p className="px-2 text-md w-10/12">Pick up dry cleaning</p>
-            <button className="bg-blue hover:bg-slate-400 transition duration-500 rounded-full w-7 h-7 mr-3 float-right"></button>
-            <button className="bg-red hover:bg-slate-400 transition duration-500 rounded-full w-7 h-7 mr-3 float-right"></button>
-          </div>
-        </div>
+        <ul className="justify-center">
+          {todos.map(todo => 
+            <Todos 
+              key={todo.id}
+              todo={todo}
+              removeTodo={() => removeTodo(todo.id)}
+              updateTodo={() => updateTodo(todo.id)}
+            />
+          )}
+        </ul>
 
       </div>
       <Footer />
