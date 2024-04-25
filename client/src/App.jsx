@@ -1,12 +1,25 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import TodosForm from './components/TodosForm';
 import Todos from './components/Todos';
 import Footer from './components/Footer';
 
-const App = (props) => {
-  const [todos, setTodos] = useState(props.todos);
+const App = () => {
+  const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
   const [showAll, setShowAll] = useState(true);
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/todos')
+      .then(response => {
+        console.log('promise fulfilled')
+        setTodos(response.data)
+      })
+  }, [])
+  console.log('render', todos.length, 'todos')
+
 
   const completeTodo = () => {
 
