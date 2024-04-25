@@ -1,0 +1,19 @@
+{
+    "todos": [
+        {
+          "id": 1,
+          "content": "Pick up dry cleaning",
+          "complete": false
+        },
+        {
+          "id": 2,
+          "content": "Do the dishes",
+          "complete": true
+        },
+        {
+          "id": 3,
+          "content": "Finish lectures",
+          "complete": false
+        }
+    ]
+}
