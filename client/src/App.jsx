@@ -10,24 +10,32 @@ const App = () => {
   const [showAll, setShowAll] = useState(true);
 
   useEffect(() => {
-    console.log('effect')
     axios
       .get('http://localhost:3001/todos')
       .then(response => {
-        console.log('promise fulfilled')
         setTodos(response.data)
       })
   }, [])
-  console.log('render', todos.length, 'todos')
 
 
   const completeTodo = () => {
 
   }
 
-  const addTodo = () => {
+  const addTodo = (event) => {
     event.preventDefault();
     console.log('add button clicked', event.target);
+    const todoObject = {
+      content: newTodo,
+      important: Math.random() > 0.5
+    }
+
+    axios
+    .post('http://localhost:3001/todos', todoObject)
+    .then(response => {
+      setTodos(todos.concat(response.data))
+      setNewTodo('')
+    })
   }
 
   const removeTodo = () => {

@@ -1,19 +1,34 @@
 {
-    "todos": [
-        {
-          "id": 1,
-          "content": "Pick up dry cleaning",
-          "complete": false
-        },
-        {
-          "id": 2,
-          "content": "Do the dishes",
-          "complete": true
-        },
-        {
-          "id": 3,
-          "content": "Finish lectures",
-          "complete": false
-        }
-    ]
+  "todos": [
+    {
+      "id": "1",
+      "content": "Pick up dry cleaning",
+      "complete": false
+    },
+    {
+      "id": "2",
+      "content": "Do the dishes",
+      "complete": true
+    },
+    {
+      "id": "3",
+      "content": "Finish lectures",
+      "complete": false
+    },
+    {
+      "id": "3c81",
+      "content": "Cook",
+      "important": true
+    },
+    {
+      "id": "b362",
+      "content": "Skin care",
+      "important": true
+    },
+    {
+      "id": "7bb9",
+      "content": "Practice guitar",
+      "important": false
+    }
+  ]
 }
