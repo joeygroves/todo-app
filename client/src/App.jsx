@@ -26,6 +26,9 @@ const App = () => {
       .complete(id, completedTodo)
       .then(returnedTodo => {
         setTodos(todos.map(todo => todo.id !== id ? todo : returnedTodo))
+      })
+      .catch(error => {
+        alert(`The to-do '${todo.content}' was already deleted from the server`)
       });
   }
 
