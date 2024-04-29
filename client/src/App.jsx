@@ -31,7 +31,6 @@ const App = () => {
 
   const addTodo = (event) => {
     event.preventDefault();
-    console.log('add button clicked', event.target);
     const todoObject = {
       content: newTodo,
       complete: Math.random() > 0.5
@@ -39,8 +38,8 @@ const App = () => {
 
     todoService
       .create(todoObject)
-      .then(response => {
-        setTodos(todos.concat(response.data))
+      .then(returnedTodo => {
+        setTodos(todos.concat(returnedTodo))
         setNewTodo('')
       })
   }
