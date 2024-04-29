@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import todoService from './services/todos';
 import TodosForm from './components/TodosForm';
 import Todos from './components/Todos';
