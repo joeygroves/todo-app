@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import todoService from './services/todos';
 import TodosForm from './components/TodosForm';
 import Todos from './components/Todos';
 import Footer from './components/Footer';
@@ -10,8 +11,8 @@ const App = () => {
   const [showAll, setShowAll] = useState(true);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/todos')
+    todoService
+      .getAll()
       .then(response => {
         setTodos(response.data)
       })
@@ -23,9 +24,11 @@ const App = () => {
     const todo = todos.find(t => t.id === id);
     const changedTodo = {...todo, complete: !todo.complete};
 
-    axios.put(url, changedTodo).then(response => {
-      setTodos(todos.map(t => t.id !== id ? t : response.data))
-    });
+    todoService
+      .update(id, changedTodo)
+      .then(response => {
+        setTodos(todos.map(t => t.id !== id ? t : response.data))
+      });
   }
 
   const addTodo = (event) => {
@@ -36,12 +39,12 @@ const App = () => {
       complete: Math.random() > 0.5
     }
 
-    axios
-    .post('http://localhost:3001/todos', todoObject)
-    .then(response => {
-      setTodos(todos.concat(response.data))
-      setNewTodo('')
-    })
+    todoService
+      .create(todoObject)
+      .then(response => {
+        setTodos(todos.concat(response.data))
+        setNewTodo('')
+      })
   }
 
   const removeTodo = () => {
