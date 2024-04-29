@@ -1,8 +1,9 @@
-import axios from 'axios'
-const baseUrl = 'http://localhost:3001/todos'
+import axios from 'axios';
+const baseUrl = 'http://localhost:3001/todos';
 
 const getAll = () => {
-  return axios.get(baseUrl)
+  const request = axios.get(baseUrl)
+  return request.then(response => response.data)
 }
 
 const create = newObject => {

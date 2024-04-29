@@ -12,8 +12,8 @@ const App = () => {
   useEffect(() => {
     todoService
       .getAll()
-      .then(response => {
-        setTodos(response.data)
+      .then(initialTodos => {
+        setTodos(initialTodos)
       })
   }, [])
 
