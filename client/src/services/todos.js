@@ -16,8 +16,4 @@ const complete = (id, newObject) => {
   return request.then(response => response.data);
 }
 
-export default { 
-  getAll: getAll, 
-  create: create, 
-  complete: complete 
-}
+export default { getAll, create, complete };
