@@ -17,21 +17,6 @@ const App = () => {
       })
   }, [])
 
-
-  const completeTodo = (id) => {
-    const todo = todos.find(t => t.id === id);
-    const completedTodo = {...todo, complete: !todo.complete};
-
-    todoService
-      .complete(id, completedTodo)
-      .then(returnedTodo => {
-        setTodos(todos.map(todo => todo.id !== id ? todo : returnedTodo))
-      })
-      .catch(error => {
-        alert(`The to-do '${todo.content}' was already deleted from the server`)
-      });
-  }
-
   const addTodo = (event) => {
     event.preventDefault();
     const todoObject = {
@@ -47,14 +32,28 @@ const App = () => {
       })
   }
 
-  const removeTodo = () => {
-    event.preventDefault();
-    console.log('remove button clicked', event.target);
+  const completeTodo = (id) => {
+    const todo = todos.find(t => t.id === id);
+    const completedTodo = {...todo, complete: !todo.complete};
+
+    todoService
+      .complete(id, completedTodo)
+      .then(returnedTodo => {
+        setTodos(todos.map(todo => todo.id !== id ? todo : returnedTodo))
+      })
+      .catch(error => {
+        alert(`The to-do '${todo.content}' was already deleted from the server`)
+      });
   }
 
   const updateTodo = () => {
     event.preventDefault();
     console.log('update button clicked', event.target);
+  }
+
+  const removeTodo = () => {
+    event.preventDefault();
+    console.log('remove button clicked', event.target);
   }
 
   const handleTodoChange = (event) => {
