@@ -11,7 +11,7 @@ const create = newObject => {
   return request.then(response => response.data);
 }
 
-const update = (id, newObject) => {
+const complete = (id, newObject) => {
   const request = axios.put(`${baseUrl}/${id}`, newObject);
   return request.then(response => response.data);
 }
@@ -19,5 +19,5 @@ const update = (id, newObject) => {
 export default { 
   getAll: getAll, 
   create: create, 
-  update: update 
+  complete: complete 
 }

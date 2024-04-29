@@ -23,7 +23,7 @@ const App = () => {
     const completedTodo = {...todo, complete: !todo.complete};
 
     todoService
-      .update(id, completedTodo)
+      .complete(id, completedTodo)
       .then(returnedTodo => {
         setTodos(todos.map(todo => todo.id !== id ? todo : returnedTodo))
       });
