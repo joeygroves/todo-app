@@ -46,13 +46,25 @@ const App = () => {
       });
   }
 
-  const updateTodo = (id) => {
+  /*
+  const changeTodoContent = (id) => {
     console.log('update button clicked');
+    const todo = todos.find(t => t.id === id);
+    const updatedTodo = {...todo, content: updateTodo};
+
+    todoService
+      .update(id, updatedTodo)
+      .then(returnedTodo => {
+        setTodos(todos.map(todo => todo.id !== id ? todo : returnedTodo))
+      })
+      .catch(error => {
+        alert(`The to-do '${todo.content}' you're trying to update was already deleted from the server`)
+      });
   }
+  */
 
   const removeTodo = () => {
-    event.preventDefault();
-    console.log('remove button clicked', event.target);
+    console.log('remove button clicked');
   }
 
   const handleTodoChange = (event) => {
@@ -87,7 +99,6 @@ const App = () => {
               key={todo.id}
               todo={todo}
               removeTodo={() => removeTodo(todo.id)}
-              updateTodo={() => updateTodo(todo.id)}
               completeTodo={() => completeTodo(todo.id)}
             />
           )}

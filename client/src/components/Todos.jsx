@@ -1,4 +1,4 @@
-const Todos = ({ todo, removeTodo, updateTodo, completeTodo }) => {
+const Todos = ({ todo, removeTodo, completeTodo }) => {
     return (
         <li className="flex p-4 w-full bg-grey rounded-sm">
             <input 
@@ -12,11 +12,12 @@ const Todos = ({ todo, removeTodo, updateTodo, completeTodo }) => {
                 <span className={todo.complete ? "line-through" : ""}>{todo.content}</span>
             </p>
 
+        {/*
             <button 
                 className="bg-blue hover:bg-slate-400 transition duration-500 rounded-full w-7 h-7 mr-3 float-right" 
-                onClick={updateTodo}
             >
             </button>
+        */}
 
             <button 
                 className="bg-red hover:bg-slate-400 transition duration-500 rounded-full w-7 h-7 mr-3 float-right" 
