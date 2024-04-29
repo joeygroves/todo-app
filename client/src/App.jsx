@@ -19,14 +19,13 @@ const App = () => {
 
 
   const completeTodo = (id) => {
-    const url = `http://localhost:3001/todos/${id}`;
     const todo = todos.find(t => t.id === id);
-    const changedTodo = {...todo, complete: !todo.complete};
+    const completedTodo = {...todo, complete: !todo.complete};
 
     todoService
-      .update(id, changedTodo)
-      .then(response => {
-        setTodos(todos.map(t => t.id !== id ? t : response.data))
+      .update(id, completedTodo)
+      .then(returnedTodo => {
+        setTodos(todos.map(todo => todo.id !== id ? todo : returnedTodo))
       });
   }
 
