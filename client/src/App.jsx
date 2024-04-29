@@ -37,18 +37,17 @@ const App = () => {
     const completedTodo = {...todo, complete: !todo.complete};
 
     todoService
-      .complete(id, completedTodo)
+      .update(id, completedTodo)
       .then(returnedTodo => {
         setTodos(todos.map(todo => todo.id !== id ? todo : returnedTodo))
       })
       .catch(error => {
-        alert(`The to-do '${todo.content}' was already deleted from the server`)
+        alert(`The to-do '${todo.content}' you're trying to complete was already deleted from the server`)
       });
   }
 
-  const updateTodo = () => {
-    event.preventDefault();
-    console.log('update button clicked', event.target);
+  const updateTodo = (id) => {
+    console.log('update button clicked');
   }
 
   const removeTodo = () => {
