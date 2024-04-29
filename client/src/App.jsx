@@ -18,8 +18,14 @@ const App = () => {
   }, [])
 
 
-  const completeTodo = () => {
+  const completeTodo = (id) => {
+    const url = `http://localhost:3001/todos/${id}`;
+    const todo = todos.find(t => t.id === id);
+    const changedTodo = {...todo, complete: !todo.complete};
 
+    axios.put(url, changedTodo).then(response => {
+      setTodos(todos.map(t => t.id !== id ? t : response.data))
+    });
   }
 
   const addTodo = (event) => {
@@ -27,7 +33,7 @@ const App = () => {
     console.log('add button clicked', event.target);
     const todoObject = {
       content: newTodo,
-      important: Math.random() > 0.5
+      complete: Math.random() > 0.5
     }
 
     axios
