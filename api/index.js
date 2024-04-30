@@ -27,6 +27,17 @@ app.get('/api/todos', (request, response) => {
   response.json(todos)
 })
 
+app.get('/api/todos/:id', (request, response) => {
+  const id = Number(request.params.id);
+  const todo = todos.find(todo => todo.id === id)
+  if (todo) {
+    response.json(todo)
+  } else {
+    console.log('x')
+    response.status(404).end()
+  }
+})
+
 const PORT = 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
