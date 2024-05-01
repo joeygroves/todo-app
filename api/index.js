@@ -38,6 +38,13 @@ app.get('/api/todos/:id', (request, response) => {
   }
 })
 
+app.delete('/api/todos/:id', (request, response) => {
+  const id = Number(request.params.id)
+  todos = todos.filter(todo => todo.id !== id)
+
+  response.status(204).end()
+})
+
 const PORT = 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
