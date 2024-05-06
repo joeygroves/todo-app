@@ -1,41 +1,10 @@
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
 
-const password = process.argv[2];
+const Todo = require('./models/todo');
 
-const url =
-  `mongodb+srv://babushka:${password}@cluster0.het17of.mongodb.net/todoApp?retryWrites=true&w=majority&appName=Cluster0`
-
-mongoose.set('strictQuery',false)
-mongoose.connect(url)
-
-const todoSchema = new mongoose.Schema({
-  content: String,
-  complete: Boolean,
-});
-
-const Todo = mongoose.model('Todo', todoSchema);
-
-/*
 let todos = [
-    {
-      id: 1,
-      content: "Pick up dry cleaning",
-      complete: false
-    },
-    {
-      id: 2,
-      content: "Do the dishes",
-      complete: true
-    },
-    {
-      id: 3,
-      content: "Finish lectures",
-      complete: false
-    },
   ]
-*/
 
 app.use(express.static('dist'));
 
