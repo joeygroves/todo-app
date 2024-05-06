@@ -17,9 +17,9 @@ mongoose.connect(url)
 const todoSchema = new mongoose.Schema({
   content: String,
   complete: Boolean,
-})
+});
 
-const Todo = mongoose.model('Todo', todoSchema)
+const Todo = mongoose.model('Todo', todoSchema);
 
 const todo = new Todo({
   content: 'HTML is easy',
