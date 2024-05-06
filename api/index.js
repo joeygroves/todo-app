@@ -40,14 +40,9 @@ app.get('/api/todos', (request, response) => {
 });
 
 app.get('/api/todos/:id', (request, response) => {
-  const id = Number(request.params.id);
-  const todo = todos.find(todo => todo.id === id)
-  if (todo) {
-    response.json(todo)
-  } else {
-    console.log('x')
-    response.status(404).end()
-  }
+  Todo.findById(request.params.id).then(todo => {
+    response.json(todo);
+  })
 });
 
 app.delete('/api/todos/:id', (request, response) => {
@@ -56,13 +51,6 @@ app.delete('/api/todos/:id', (request, response) => {
 
   response.status(204).end()
 });
-
-const generateId = () => {
-  const maxId = todos.length > 0
-    ? Math.max(...todos.map(t => t.id))
-    : 0
-  return maxId + 1;
-}
 
 app.post('/api/todos', (request, response) => {
   const body = request.body;
@@ -73,15 +61,14 @@ app.post('/api/todos', (request, response) => {
     })
   }
 
-  const todo = {
+  const todo = new Todo({
     content: body.content,
-    complete: Boolean(body.important) || false,
-    id: generateId()
-  }
+    important: body.important || false,
+  })
 
-  todos = todos.concat(todo);
-
-  response.json(todo);
+  todo.save().then(savedTodo => {
+    response.json(savedTodo);
+  })
 });
 
 app.use(unknownEndpoint);
