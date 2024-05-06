@@ -47,9 +47,30 @@ app.delete('/api/todos/:id', (request, response) => {
   response.status(204).end()
 });
 
+const generateId = () => {
+  const maxId = todos.length > 0
+    ? Math.max(...todos.map(t => t.id))
+    : 0
+  return maxId + 1;
+}
+
 app.post('/api/todos', (request, response) => {
-  const todo = request.body;
-  console.log(todo);
+  const body = request.body;
+
+  if (!body.content) {
+    return response.status(400).json({
+      error: 'content missing'
+    })
+  }
+
+  const todo = {
+    content: body.content,
+    complete: Boolean(body.important) || false,
+    id: generateId()
+  }
+
+  todos = todos.concat(todo);
+
   response.json(todo);
 });
 
