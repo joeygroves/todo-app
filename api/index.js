@@ -39,10 +39,16 @@ app.get('/api/todos', (request, response) => {
   })
 });
 
-app.get('/api/todos/:id', (request, response) => {
-  Todo.findById(request.params.id).then(todo => {
-    response.json(todo);
+app.get('/api/todos/:id', (request, response, next) => {
+  Todo.findById(request.params.id)
+    .then(todo => {
+      if (todo) {
+        response.json(todo)
+      } else {
+        response.status(404).end()
+      }
   })
+  .catch(error => next(error))
 });
 
 app.delete('/api/todos/:id', (request, response) => {
@@ -72,6 +78,17 @@ app.post('/api/todos', (request, response) => {
 });
 
 app.use(unknownEndpoint);
+
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message);
+
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  }
+
+}
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
