@@ -63,8 +63,25 @@ const App = () => {
   }
   */
 
-  const removeTodo = () => {
-    console.log('remove button clicked');
+  const removeTodo = id => {
+    const todo = todos.find(t => t.id === id)
+      const content = todo.content
+      console.log(`person id: ${id}, person name: ${content}`)
+
+      if (confirm(`Delete ${content} ?`) === true) {
+        todoService
+        .remove(id)
+        .then(removedTodo => {
+          setTodos(todos.filter(t => t.id !== id))
+        })
+        .catch(error => {
+          setNotificationMessage({
+              "text": `The todo was already removed from server`,
+              "type": "error"
+          })
+          setTodos(todos.filter(t => t.id !== id))
+        })
+      }
   }
 
   const handleTodoChange = (event) => {
