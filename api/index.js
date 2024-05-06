@@ -51,11 +51,12 @@ app.get('/api/todos/:id', (request, response, next) => {
   .catch(error => next(error))
 });
 
-app.delete('/api/todos/:id', (request, response) => {
-  const id = Number(request.params.id)
-  todos = todos.filter(todo => todo.id !== id)
-
-  response.status(204).end()
+app.delete('/api/todos/:id', (request, response, next) => {
+  Todo.findByIdAndDelete(request.params.id)
+    .then(result => {
+      response.status(204).end()
+    })
+    .catch(error => next(error))
 });
 
 app.post('/api/todos', (request, response) => {
@@ -69,13 +70,28 @@ app.post('/api/todos', (request, response) => {
 
   const todo = new Todo({
     content: body.content,
-    important: body.important || false,
+    complete: body.complete || false,
   })
 
   todo.save().then(savedTodo => {
     response.json(savedTodo);
   })
 });
+
+app.put('/api/todos/:id', (request, response, next) => {
+  const body = request.body
+
+  const todo = {
+    content: body.content,
+    complete: body.complete,
+  }
+
+  Todo.findByIdAndUpdate(request.params.id, todo, { new: true })
+    .then(updatedTodo => {
+      response.json(updatedTodo)
+    })
+    .catch(error => next(error))
+})
 
 app.use(unknownEndpoint);
 
