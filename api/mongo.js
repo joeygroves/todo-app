@@ -23,10 +23,20 @@ const Todo = mongoose.model('Todo', todoSchema)
 
 const todo = new Todo({
   content: 'HTML is easy',
-  important: true,
+  complete: true,
 })
 
+/*
 todo.save().then(result => {
   console.log('todo saved!')
   mongoose.connection.close()
+})
+*/
+
+
+Todo.find({ complete: true }).then(result => {
+    result.forEach(todo => {
+        console.log(todo);
+    })
+    mongoose.connection.close();
 })
