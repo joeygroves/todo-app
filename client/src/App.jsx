@@ -8,6 +8,7 @@ const App = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
   const [showAll, setShowAll] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('some error happened...');
 
   useEffect(() => {
     todoService
@@ -19,17 +20,22 @@ const App = () => {
 
   const addTodo = (event) => {
     event.preventDefault();
-    const todoObject = {
-      content: newTodo,
-      complete: Math.random() > 0.5
-    }
 
-    todoService
+    if (todos.find(todo => todo.content === newTodo)) {
+      alert(`${newTodo} was already added to database`);
+      setNewTodo('');
+    } else {
+      const todoObject = {
+        content: newTodo
+      }
+
+      todoService
       .create(todoObject)
       .then(returnedTodo => {
         setTodos(todos.concat(returnedTodo))
         setNewTodo('')
       })
+    }
   }
 
   const completeTodo = (id) => {
@@ -42,7 +48,9 @@ const App = () => {
         setTodos(todos.map(todo => todo.id !== id ? todo : returnedTodo))
       })
       .catch(error => {
-        alert(`The to-do '${todo.content}' you're trying to complete was already deleted from the server`)
+        setErrorMessage(
+          `Todo '${todo.content}' was already removed from the server`
+        )
       });
   }
 
