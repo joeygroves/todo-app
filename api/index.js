@@ -19,7 +19,22 @@ let todos = [
     },
   ]
 
+const requestLogger = (request, response, next) => {
+  console.log('Method:', request.method);
+  console.log('Path:', request.path);
+  console.log('Body:', request.body);
+  console.log('---');
+  next();
+}
+
 app.use(express.json());
+app.use(requestLogger)
+
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({
+    error: 'unknown endpont'
+  })
+}
 
 app.get('/', (request, response) => {
   response.send('<h1>Hello World!</h1>')
@@ -73,6 +88,8 @@ app.post('/api/todos', (request, response) => {
 
   response.json(todo);
 });
+
+app.use(unknownEndpoint);
 
 const PORT = 3001
 app.listen(PORT, () => {
