@@ -64,7 +64,9 @@ app.get('/', (request, response) => {
 });
 
 app.get('/api/todos', (request, response) => {
-  response.json(todos)
+  Todo.find({}).then(todos => {
+    response.json(todos);
+  })
 });
 
 app.get('/api/todos/:id', (request, response) => {
