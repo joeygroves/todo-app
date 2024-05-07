@@ -46,6 +46,8 @@ This full-stack project was built using these technologies:
 
 ### Wireframes
 
+These wireframes were designed from scratch in Figma, with just high fidelity wireframes in mind. The wireframes were designed with simplicity in mind, with the core focus on functionality over design. In addition, the wireframes loosely show a user flow; for adding to-dos, deleting to-dos, completing to-dos and updating a to-do name.
+
 #### Main Menu
 <div align="center">
     <img alt="desktop-wireframes" src="./figma/todo-main-wireframe.png" style="max-width: 800px"/>
@@ -68,47 +70,39 @@ This full-stack project was built using these technologies:
 
 ## Reflection
 ### What I’ve Learned
-TBA
+This was my first time designing a full-stack application from scratch. I had to research the colour pallettes and fonts first. Then proceed to create the individual elements, such as buttons and text forms. And it was also my first time utilising the Figma component feature. So I was able to use this for the individual task component, and was able to reuse my designs with ease. As a result, I settled on a sleek and simple design for my to-do app, which I was confident in implementing from scratch - with the little experience I have in web design.
 
 ### Problems Encountered
-TBA
+During the design process, I definitely struggled with whitespacing. I seldom knew how much or how little I should give between each element. Therefore, I just had to rely on my instinct to determine if the design looked good or not. A way I could avoid this is to read documentation on modern web app design or maybe take a short online course on UX/UI design. So I have a strong foundation to work with. Additionally, I could have just asked a friend for a second opinion on how I could have improved this design. But since, I was the primary user of this web app. I did not think that this was necessary.
 
 ### Future Directions
-TBA
+In the future, I could have taken some time to map out the userflow and draw low fidelity wireframes instead of jumping straight into a high fidelity wireframe. So that I could understand how the user would interact with this system through and through and then base my final design around the userflow.
 
 ## Development Process
 
 #### Key Skills
 - Front-End Development
 - Back-End Development
-- Database Managment
+- Database Management
 
-The development process was smooth, for the most part - but took way longer than expected. I had a clear vision of what the end-product should look like- and its functionality. But I procrastinated in starting the actual coding of the website, as I felt a little overwhelemed with the amount of features I had to implement. Therefore, using a Kanban Board, via Jira Software, definitely helped with breaking massive tasks into smaller and manageable pieces,that I was able to easily implement. Moving stories from one section of the board to another, felt very satisfying and helped keep track of the development process. <br/> 
+For the most part, I would argue that the development process was very smooth as having the Figma designs beforehand helped a lot with visualising how I want the web app to look like and how users would interact with it. Therefore, I would say that my first attempt in bulding a full-stack application from scratch was very successful.
 
 ### Kanban Board
-<img alt="kanban" src="" style="max-width: 800px"/>
+<img alt="kanban" src="./figma/kanban-board.png" style="max-width: 800px"/>
 
 ### What I’ve Learned
 
-Using React.js made sense for this single-page website. I also put an emphasis on organisation, so my hooks were under one directory, my components where under a separate directory, etc.. In turn, I've learned and applied React programming best practices during the development of this project. <br/>
 
-This was my first time using Framer Motion and React Smooth Scrolling. In my opinion, this enhanced the user experience of interacting with the website, and as a developer it was very easy to add animations and smooth scroll. Like Tailwind CSS, I will continue to use this in future projects involving any portfolios and beyond. <br/> 
 
 ### Problems Encountered
 
-This was my second experience building a project with Tailwind CSS and my (lack of) experience shows. It was tough to set up Tailwind at the start, after creating the react app. But it was definitely worth it, as I was able to debug styling bugs much easier, compared to if all styles where under one singular CSS file; and I was able to easily create responsive CSS styles. <br/>
 
-However, there two main issues that I have yet to resolve. One of them being in the 'Affiliates' page, when the website is in tablet or mobile view, the grid pop-up information's text seems to overflow out of the box it was supposed to be contained under. And I haven't figured out how to solve this. <br/>
-
-The other issue is the footer. It was supposed to have the social media icons component (as seen in the wireframes), that was used in the home/landing page, in the footer itself. Since I created this component for the intention of re-use within the project. It made sense for me to just add the component into the footer and leave it at that. However, when I did such thing, the component was too large for the footer and it would create problems in the positioning of the other elements. <br/>
 
 ### Future Directions
 
-Other than fixing the styling issues, I would improve on two other aspects of this current iteration of the website:
+Going further, I would definitely try and implement the update to-do task name in the future. It was a core part of my early design that I didn't have the courage to execute. So if I were to revisit this project again in the future, that would be a main feature for me I would prioritise implementing.
 
-- Contact Form: I could add a back-end to this project and handle user form data myself instead of using 'React Hook Form'.
-- Testimonial Carousel: Either change the styling of the component and make it match the intended design based on the wireframes. Or I could design and implement the testimonial carousel myself, from scratch.
-
+Another feature I would implement would probably be a user login system and user authentication. So that individual users would be able to add and manage their own tasks, and have it so their tasks would only be shared with them and them only, no one else.
 
 ## Credits
 
