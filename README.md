@@ -92,17 +92,26 @@ For the most part, I would argue that the development process was very smooth as
 
 ### What I’ve Learned
 
+From previous project, I had somewhat of a grasp of front-end development. But this was the project, for me, which cemented my understanding of React components, useEffect and useState hooks. Which I've used to get the todos from the database, and pass the data through the intended compenents. 
 
+In addition, I've also learned about axios and cors, which I used to connect the back-end to the front-end and vice versa. And I've also learned how to use .env files to configure ports and my MongoDB database, so that I am able to deploy my full-stack application to Render.
 
 ### Problems Encountered
 
+The biggest problem I encountered was definitely the setup process. I had to set up tailwind css and configure themes and colour pallettes within the tailwind config file. Also, having to install the different libraries such as axios and cors were very confusing at first. 
 
+Additionally, having to run the 'build' script in my front end and copy the dist directory to my backend was a first for me, as I had to do that every time I made changes to the front-end - in order for the front-end to display on Render. 
+
+So overall, just the fact that there's so much setup compared to the actual coding part was very challenging to me and I actually found it quite annoying. But I managed to figure it out thankfully.
 
 ### Future Directions
 
 Going further, I would definitely try and implement the update to-do task name in the future. It was a core part of my early design that I didn't have the courage to execute. So if I were to revisit this project again in the future, that would be a main feature for me I would prioritise implementing.
 
 Another feature I would implement would probably be a user login system and user authentication. So that individual users would be able to add and manage their own tasks, and have it so their tasks would only be shared with them and them only, no one else.
+
+### Final Words
+All in all, I was very happy with how my project turned out. During this whole process I was battling with my perfectionist tendencies and I would periodically remind myself that finishing a project, in its barebones, is more important than making a project look like what I had imaginied in my head. It was small hurdle looking back, but it was what I needed to get over, so that I could move on and improve as a programmer and designer.
 
 ## Credits
 
