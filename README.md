@@ -1,6 +1,6 @@
 <h2 align="center">
   To-Do App<br/>
-  <a href="https://todo-app-rob8.onrender.com/" target="_blank">https://todo-app-rob8.onrender.com/</a>
+  <a href="https://todo-app-rob8.onrender.com/" target="_blank">Demo: https://todo-app-rob8.onrender.com/</a>
 </h2>
 <div align="center">
   <img alt="mockup" src="./figma/desktop-mockup.png" style="max-width: 800px" />
